@@ -15,6 +15,7 @@ export const NAV_LINKS = [
   { label: "Services", href: "#services" },
   { label: "How We Work", href: "#process" },
   { label: "Why Us", href: "#why-us" },
+  { label: "Team", href: "#team" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
 ] as const;
@@ -182,6 +183,7 @@ export const FOOTER_SERVICES = [
 
 export const FOOTER_COMPANY = [
   { label: "How We Work", href: "#process" },
+  { label: "Team", href: "#team" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },

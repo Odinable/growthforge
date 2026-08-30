@@ -5,6 +5,7 @@ import { Problem } from "@/components/Problem";
 import { Services } from "@/components/Services";
 import { Process } from "@/components/Process";
 import { WhyUs } from "@/components/WhyUs";
+import { Team } from "@/components/Team";
 import { Pricing } from "@/components/Pricing";
 import { FAQ } from "@/components/FAQ";
 import { CTA } from "@/components/CTA";
@@ -21,6 +22,7 @@ export default function Home() {
         <Services />
         <Process />
         <WhyUs />
+        <Team />
         <Pricing />
         <FAQ />
         <CTA />
