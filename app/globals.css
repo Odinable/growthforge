@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Growthforge design tokens
+   Palette per BUILD-AND-DEPLOY.md §2. Display typography follows the
+   8bitenterprise.com reference: very tight tracking on large type,
+   wide tracking on small uppercase labels.
+   ------------------------------------------------------------------ */
+@theme {
+  --color-bg: #0b0b0f;
+  --color-surface: #16161c;
+  --color-surface-2: #1c1c24;
+  --color-border: #26262f;
+  --color-ink: #f5f5f7;
+  --color-muted: #a1a1aa;
+  --color-molten: #ff6b2c;
+  --color-glow: #ffa23a;
+
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* clears the sticky nav when jumping to an anchor */
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-molten);
+    color: #0b0b0f;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-molten);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Oversized headline treatment lifted from the reference site */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.055em;
+    line-height: 0.95;
+    text-wrap: balance;
+  }
+
+  .display-xl {
+    letter-spacing: -0.07em;
+  }
+
+  /* Small uppercase eyebrow / index label */
+  .label {
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .rule {
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+/* Ticker band ------------------------------------------------------ */
+@keyframes gf-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: gf-marquee 38s linear infinite;
+  will-change: transform;
+}
+
+/* Ember glow behind the hero -------------------------------------- */
+@keyframes gf-breathe {
+  0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 0.8;  transform: translate(-50%, -50%) scale(1.08); }
+}
+
+.ember {
+  animation: gf-breathe 9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track,
+  .ember {
+    animation: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Entrance + scroll-reveal animation.
+
+   Every "hidden" starting state is gated behind the `.js` class, which an
+   inline script sets on <html> before first paint. If the bundle fails or
+   hydration never runs, none of these rules apply and the page renders
+   fully visible instead of blank.
+   ------------------------------------------------------------------ */
+
+@keyframes gf-rise {
+  from { opacity: 0; transform: translateY(0.35em); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes gf-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Hero entrance — pure CSS, so it plays without waiting for hydration. */
+.js .rise,
+.js .fade-up {
+  opacity: 0;
+  animation-duration: 0.75s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: forwards;
+  animation-delay: var(--d, 0ms);
+}
+
+.js .rise    { animation-name: gf-rise; }
+.js .fade-up { animation-name: gf-fade-up; }
+
+/* Scroll reveal — `.is-in` is added by the IntersectionObserver in Reveal. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .rise,
+  .js .fade-up,
+  .js [data-reveal] {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}

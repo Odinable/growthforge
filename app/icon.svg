@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0B0B0F"/>
+  <!-- Molten spark: an upward chevron struck through a bar, echoing a forge mark -->
+  <path d="M32 12 L48 34 H38 L46 52 L18 30 H29 L22 12 Z" fill="#FF6B2C"/>
+</svg>

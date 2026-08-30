@@ -1,0 +1,31 @@
+import { Nav } from "@/components/Nav";
+import { Hero } from "@/components/Hero";
+import { Marquee } from "@/components/Marquee";
+import { Problem } from "@/components/Problem";
+import { Services } from "@/components/Services";
+import { Process } from "@/components/Process";
+import { WhyUs } from "@/components/WhyUs";
+import { Pricing } from "@/components/Pricing";
+import { FAQ } from "@/components/FAQ";
+import { CTA } from "@/components/CTA";
+import { Footer } from "@/components/Footer";
+
+export default function Home() {
+  return (
+    <>
+      <Nav />
+      <main>
+        <Hero />
+        <Marquee />
+        <Problem />
+        <Services />
+        <Process />
+        <WhyUs />
+        <Pricing />
+        <FAQ />
+        <CTA />
+      </main>
+      <Footer />
+    </>
+  );
+}
