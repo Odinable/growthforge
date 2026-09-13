@@ -1,5 +1,5 @@
 import { Check } from "lucide-react";
-import { TIERS } from "@/lib/content";
+import { SITE, TIERS } from "@/lib/content";
 import { Eyebrow, Reveal, Section } from "@/components/ui";
 
 export function Pricing() {
@@ -65,7 +65,9 @@ export function Pricing() {
               </ul>
 
               <a
-                href="#contact"
+                href={SITE.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`mt-10 inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-semibold transition-colors duration-300 ${
                   tier.featured
                     ? "bg-molten text-bg hover:bg-glow"
@@ -84,7 +86,7 @@ export function Pricing() {
           Need something specific instead of a package? We do project work too —
           websites, brand identities, automation builds.{" "}
           <a
-            href="#contact"
+            href={`mailto:${SITE.email}?subject=Custom%20quote`}
             className="text-molten underline-offset-4 hover:underline"
           >
             Ask for a custom quote &rarr;

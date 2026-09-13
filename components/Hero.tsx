@@ -1,4 +1,4 @@
-import { TRUST_STATS } from "@/lib/content";
+import { SITE, TRUST_STATS } from "@/lib/content";
 import { ButtonLink, Section } from "@/components/ui";
 
 /** Headline split by line so each can rise independently. */
@@ -74,7 +74,7 @@ export function Hero() {
             style={{ "--d": "620ms" } as React.CSSProperties}
           >
             <div className="flex flex-wrap gap-3">
-              <ButtonLink href="#contact">Book a Free Strategy Call</ButtonLink>
+              <ButtonLink href={SITE.bookingUrl}>Book a Free Strategy Call</ButtonLink>
               <ButtonLink href="#services" variant="ghost">
                 See What We Do
               </ButtonLink>

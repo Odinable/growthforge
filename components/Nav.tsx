@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { NAV_LINKS } from "@/lib/content";
+import { NAV_LINKS, SITE } from "@/lib/content";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -55,7 +55,9 @@ export function Nav() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#contact"
+            href={SITE.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden h-11 items-center rounded-full bg-molten px-6 text-sm font-semibold text-bg transition-colors hover:bg-glow sm:inline-flex"
           >
             Book a Free Strategy Call
@@ -91,7 +93,9 @@ export function Nav() {
             ))}
           </ul>
           <a
-            href="#contact"
+            href={SITE.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setOpen(false)}
             className="mt-8 inline-flex h-13 w-full items-center justify-center rounded-full bg-molten px-6 py-4 text-sm font-semibold text-bg"
           >

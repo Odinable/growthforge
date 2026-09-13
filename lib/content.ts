@@ -4,7 +4,9 @@ export const SITE = {
   name: "Growthforge",
   tagline: "Where growth gets built.",
   taglineAlt: "We build the machine, not just the campaign.",
-  email: "tahasidd05@gmail.com",
+  email: "growthforge.cloud@gmail.com",
+  /** Every "book a call" button resolves from here. */
+  bookingUrl: "https://cal.com/growthforge-basczx/30min",
   metaTitle:
     "Growthforge — Full-Service Marketing, Design & Automation Agency",
   metaDescription:

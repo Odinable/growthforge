@@ -34,9 +34,10 @@ export function CTA() {
             </p>
 
             <div className="mt-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-6">
-              {/* Replace with your Cal.com / Calendly link before launch. */}
               <a
-                href={`mailto:${SITE.email}?subject=Strategy%20call`}
+                href={SITE.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-13 shrink-0 items-center justify-center rounded-full bg-bg px-8 py-4 text-sm font-semibold whitespace-nowrap text-ink transition-colors duration-300 hover:bg-[#1c1c24]"
               >
                 Book a Free Strategy Call

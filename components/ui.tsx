@@ -53,8 +53,18 @@ export function ButtonLink({
       ? "bg-molten text-bg hover:bg-glow"
       : "border border-border text-ink hover:border-molten hover:text-molten";
 
+  // Booking links point off-site; open them in a new tab so the
+  // visitor keeps the page they were reading.
+  const external = href.startsWith("http");
+
   return (
-    <a href={href} className={`${base} ${styles} ${className}`}>
+    <a
+      href={href}
+      className={`${base} ${styles} ${className}`}
+      {...(external
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : {})}
+    >
       {/* Two stacked copies of the label; the pair slides up on hover. */}
       <span className="relative block overflow-hidden" aria-hidden>
         <span className="block transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-full">
