@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/content";
 
@@ -32,11 +33,19 @@ export function Nav() {
       }`}
     >
       <nav className="mx-auto flex h-20 w-full max-w-[86rem] items-center justify-between px-5 sm:px-8 lg:px-12">
-        <a
-          href="#top"
-          className="display text-lg tracking-[-0.04em] uppercase"
-        >
-          Growth<span className="text-molten">forge</span>
+        <a href="#top" className="flex items-center gap-2.5">
+          {/* Decorative: the wordmark beside it already names the brand. */}
+          <Image
+            src="/logo.png"
+            alt=""
+            width={32}
+            height={32}
+            priority
+            className="h-8 w-8"
+          />
+          <span className="display text-lg tracking-[-0.04em] uppercase">
+            Growth<span className="text-molten">forge</span>
+          </span>
         </a>
 
         <ul className="hidden items-center gap-9 lg:flex">

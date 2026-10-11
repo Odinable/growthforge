@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   FOOTER_COMPANY,
   FOOTER_SERVICES,
@@ -13,9 +14,19 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Column 1 — Brand */}
           <div className="lg:col-span-4">
-            <p className="display text-2xl tracking-[-0.04em] uppercase">
-              Growth<span className="text-molten">forge</span>
-            </p>
+            <div className="flex items-center gap-3">
+              {/* Decorative: the wordmark beside it already names the brand. */}
+              <Image
+                src="/logo.png"
+                alt=""
+                width={36}
+                height={36}
+                className="h-9 w-9"
+              />
+              <p className="display text-2xl tracking-[-0.04em] uppercase">
+                Growth<span className="text-molten">forge</span>
+              </p>
+            </div>
             <p className="mt-3 text-sm text-molten italic">{SITE.tagline}</p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
               Full-service marketing, design and automation.
