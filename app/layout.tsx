@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { SITE } from "@/lib/content";
+import { SITE_URL } from "@/lib/site-url";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -16,14 +17,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  // Update to your live domain so OG/canonical URLs resolve absolutely.
-  metadataBase: new URL("https://wearegrowthforge.com"),
+  metadataBase: new URL(SITE_URL),
+  // Self-referencing canonical: tells Google this URL is the real one.
+  alternates: { canonical: "/" },
   title: SITE.metaTitle,
   description: SITE.metaDescription,
   openGraph: {
     title: SITE.metaTitle,
     description: SITE.metaDescription,
     siteName: SITE.name,
+    url: SITE_URL,
     type: "website",
     locale: "en_GB",
   },
